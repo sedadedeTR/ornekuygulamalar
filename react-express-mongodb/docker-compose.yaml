@@ -1,38 +1,27 @@
+version: '3'
 services:
-  frontend:
-    build:
-      context: frontend
+  frontend: 
+    image: sedadede9650/fe:proje
     ports:
-      - 3000:3000
-    stdin_open: true
-    volumes:
-      - ./frontend:/usr/src/app
-      - /usr/src/app/node_modules
-    restart: always
+      - "3000:3000"
     networks:
       - react-express
     depends_on:
       - backend
-
   backend:
-    restart: always
+    image: sedadede9650/be:proje
     build:
       context: backend
-    volumes:
-      - ./backend:/usr/src/app
-      - /usr/src/app/node_modules
-    depends_on:
-      - mongo
+    expose:
+      - 3000
     networks:
       - express-mongo
       - react-express
-    expose: 
-      - 3000
+    depends_on:
+      - mongo
   mongo:
     restart: always
-    image: mongo:4.2.0
-    volumes:
-      - ./data:/data/db
+    image: sedadede9650/db:proje
     networks:
       - express-mongo
     expose:
