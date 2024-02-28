@@ -5,6 +5,7 @@ metadata:
   labels:
     name: myingress
 spec:
+  ingressClassName: nginx
   rules:
   - host: proje.bb.devops
     http:
