@@ -1,19 +1,24 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myingress
-  labels:
-    name: myingress
+  name: app-ingress
 spec:
   ingressClassName: nginx
   rules:
-  - host: proje.bb.devops
+  - host: a021652c8b4ae44df882c7afe4d035fc-1891352737.eu-central-1.elb.amazonaws.com
     http:
       paths:
-      - pathType: Prefix
-        path: "/"
+      - path: /backend
+        pathType: Prefix
+        backend:
+          service:
+            name: backend
+            port:
+              number: 3000
+      - path: /
+        pathType: Prefix
         backend:
           service:
             name: frontend
-            port: 
-              number: 3000
+            port:
+              number: 80

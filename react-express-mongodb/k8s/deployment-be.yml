@@ -24,6 +24,9 @@ spec:
             memory: "128Mi"
         ports:
         - containerPort: 3000
+        env:
+        - name: MONGO_URL
+          value: "mongodb://mongo:27017/todoapp"
 
 ---
 apiVersion: v1
@@ -31,10 +34,11 @@ kind: Service
 metadata:
   name: backend
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: backend
   ports:
-  - port: 80
+  - port: 3000
     targetPort: 3000
+
 

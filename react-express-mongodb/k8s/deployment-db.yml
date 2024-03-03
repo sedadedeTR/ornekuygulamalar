@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mongo
-        image: sedadede9650/db:proje
+        image: mongo:latest
         resources:
           limits:
             memory: "512Mi"
@@ -62,5 +62,3 @@ spec:
   ports:
   - port: 27017
     targetPort: 27017
-
----
