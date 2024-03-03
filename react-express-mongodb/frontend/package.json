@@ -32,12 +32,14 @@
     "production": [
       ">0.2%",
       "not dead",
-      "not op_mini all"
+      "not op_mini all",
+      "DANGEROUSLY_DISABLE_HOST_CHECK=true"
     ],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+      "last 1 safari version",
+      "DANGEROUSLY_DISABLE_HOST_CHECK=true"
     ]
   }
 }
